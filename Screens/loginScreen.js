@@ -18,21 +18,7 @@ import { createStackNavigator, createAppContainer } from "react-navigation"; // 
 
 class LoginScreen extends React.Component {
   static navigationOptions = {
-    title: "Login",
-    headerStyle: {
-      backgroundColor: "#000",
-      elevation: 0,
-      borderBottom: "#fff"
-    },
-    headerTintColor: "#fff",
-    headerLayoutPreset: "center",
-    headerTitleStyle: {
-      flex: 1,
-      color: "#fff",
-      fontWeight: "normal",
-      alignSelf: "center",
-      textAlign: "center"
-    }
+    title: "Login"
   };
 
   constructor(props) {
@@ -84,6 +70,19 @@ class LoginScreen extends React.Component {
     }
   };
 
+  signInUser = () => {
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(this.state.email, this.state.password)
+      .then(user => {
+        firebase.auth().onAuthStateChanged(user => {
+          this.props.navigation.navigate("Home", {
+            UUID: user.uid
+          });
+        });
+      });
+  };
+
   render() {
     if (!this.state.isReady) {
       return <AppLoading />;
@@ -93,16 +92,19 @@ class LoginScreen extends React.Component {
       <Container>
         {/* Add the input here */}
 
+
         <Content padder>
           <Card rounded>
             <CardItem>
               <Item>
                 <Icon active name="mail" />
+
                 <Input
                   textContentType="emailAddress"
                   onChangeText={event => this.setState({ email: event })}
                   placeholder="Email"
                 />
+
               </Item>
             </CardItem>
             <CardItem>
@@ -114,6 +116,7 @@ class LoginScreen extends React.Component {
                   onChangeText={event => this.setState({ password: event })}
                   placeholder="Password"
                 />
+
               </Item>
             </CardItem>
 
