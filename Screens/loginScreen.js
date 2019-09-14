@@ -4,26 +4,23 @@ import {
   Container,
   Button,
   Icon,
-  Header,
-  Left,
-  Right,
-  Body,
   Text,
-  Title,
+  Card,
   Input,
   Content,
   Item,
-  Card,
   CardItem
 } from "native-base";
 import firebase from "../Components/firebase";
 import * as Font from "expo-font";
 import { Ionicons } from "@expo/vector-icons";
+import { createStackNavigator, createAppContainer } from "react-navigation"; // Version can be specified in package.json
 
 class LoginScreen extends React.Component {
   static navigationOptions = {
     title: "Login"
   };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -41,29 +38,36 @@ class LoginScreen extends React.Component {
     });
     this.setState({ isReady: true });
   }
+
   signUpUser = () => {
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .then(() => {
-        firebase.auth().onAuthStateChanged(user => {
-          firebase
-            .firestore()
-            .collection("Users")
-            .add({
-              email: user.email,
-              UUID: user.uid
-            })
-            .then(docID => {
-              this.props.navigation.navigate("Home", {
-                docID: docID
+    if (!this.state.email) {
+      alert("Email is Required!");
+    } else if (!this.state.password) {
+      alert("Please enter password!");
+    } else {
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(this.state.email, this.state.password)
+        .then(() => {
+          firebase.auth().onAuthStateChanged(user => {
+            firebase
+              .firestore()
+              .collection("Users")
+              .add({
+                email: user.email,
+                UUID: user.uid
+              })
+              .then(docID => {
+                this.props.navigation.navigate("Home", {
+                  docID: docID
+                });
               });
-            });
+          });
+        })
+        .catch(error => {
+          alert(error.message);
         });
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    }
   };
 
   signInUser = () => {
@@ -88,38 +92,61 @@ class LoginScreen extends React.Component {
       <Container>
         {/* Add the input here */}
 
-        <Container>
-          <Content padder>
-            <Card>
-              <CardItem>
-                <Icon active name="home" />
+
+        <Content padder>
+          <Card rounded>
+            <CardItem>
+              <Item>
+                <Icon active name="mail" />
+
                 <Input
                   textContentType="emailAddress"
                   onChangeText={event => this.setState({ email: event })}
                   placeholder="Email"
                 />
-              </CardItem>
 
-              <CardItem>
+              </Item>
+            </CardItem>
+            <CardItem>
+              <Item>
+                <Icon active name="text" />
                 <Input
+                  secureTextEntry={true}
                   textContentType="emailAddress"
                   onChangeText={event => this.setState({ password: event })}
                   placeholder="Password"
                 />
-                <Icon active name="swap" />
-              </CardItem>
-            </Card>
-          </Content>
-        </Container>
 
-        {/* Ask the user for their name */}
-        {/* Ask the user for their prefered bus -> 12, 12A .. etc */}
-        <Button onPress={() => this.signUpUser()}>
-          <Text>Hello</Text>
-        </Button>
+              </Item>
+            </CardItem>
+
+            <CardItem>
+              {/* Ask the user for their name */}
+              {/* Ask the user for their prefered bus -> 12, 12A .. etc */}
+              <Button
+                bordered
+                dark
+                style={styles.loginBtn}
+                onPress={() => this.signUpUser()}
+              >
+                <Text style={styles.loginBtn}>Login</Text>
+              </Button>
+            </CardItem>
+          </Card>
+        </Content>
       </Container>
     );
   }
 }
+
+const styles = {
+  card: {
+    maxWidth: "90%"
+  },
+  loginBtn: {
+    flex: 1,
+    textAlign: "center"
+  }
+};
 
 export default LoginScreen;
