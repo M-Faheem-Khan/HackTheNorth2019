@@ -12,13 +12,18 @@ import {
   Title,
   Input,
   Content,
-  Item
+  Item,
+  Card,
+  CardItem
 } from "native-base";
 import firebase from "../Components/firebase";
 import * as Font from "expo-font";
 import { Ionicons } from "@expo/vector-icons";
 
 class LoginScreen extends React.Component {
+  static navigationOptions = {
+    title: "Login"
+  };
   constructor(props) {
     super(props);
     this.state = {
@@ -61,6 +66,19 @@ class LoginScreen extends React.Component {
       });
   };
 
+  signInUser = () => {
+    firebase
+      .auth()
+      .signInWithEmailAndPassword(this.state.email, this.state.password)
+      .then(user => {
+        firebase.auth().onAuthStateChanged(user => {
+          this.props.navigation.navigate("Home", {
+            UUID: user.uid
+          });
+        });
+      });
+  };
+
   render() {
     if (!this.state.isReady) {
       return <AppLoading />;
@@ -68,35 +86,29 @@ class LoginScreen extends React.Component {
     console.log(this.state);
     return (
       <Container>
-        <Header style={{ backgroundColor: "#3f51b5" }}>
-          <Body style={{ flex: 3, justifyContent: "center" }}>
-            <Title style={{ color: "#fff", alignSelf: "center" }}>
-              Transit Companion App
-            </Title>
-          </Body>
-        </Header>
         {/* Add the input here */}
 
         <Container>
-          <Header />
-          <Content>
-            <Item>
-              <Icon active name="home" />
-              <Input
-                textContentType="emailAddress"
-                onChangeText={event => this.setState({ email: event })}
-                placeholder="Email"
-              />
-            </Item>
+          <Content padder>
+            <Card>
+              <CardItem>
+                <Icon active name="home" />
+                <Input
+                  textContentType="emailAddress"
+                  onChangeText={event => this.setState({ email: event })}
+                  placeholder="Email"
+                />
+              </CardItem>
 
-            <Item>
-              <Input
-                textContentType="emailAddress"
-                onChangeText={event => this.setState({ password: event })}
-                placeholder="Password"
-              />
-              <Icon active name="swap" />
-            </Item>
+              <CardItem>
+                <Input
+                  textContentType="emailAddress"
+                  onChangeText={event => this.setState({ password: event })}
+                  placeholder="Password"
+                />
+                <Icon active name="swap" />
+              </CardItem>
+            </Card>
           </Content>
         </Container>
 
