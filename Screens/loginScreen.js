@@ -4,21 +4,37 @@ import {
   Container,
   Button,
   Icon,
-  Header,
-  Left,
-  Right,
-  Body,
   Text,
-  Title,
+  Card,
   Input,
   Content,
-  Item
+  Item,
+  CardItem
 } from "native-base";
 import firebase from "../Components/firebase";
 import * as Font from "expo-font";
 import { Ionicons } from "@expo/vector-icons";
+import { createStackNavigator, createAppContainer } from "react-navigation"; // Version can be specified in package.json
 
 class LoginScreen extends React.Component {
+  static navigationOptions = {
+    title: "Login",
+    headerStyle: {
+      backgroundColor: "#000",
+      elevation: 0,
+      borderBottom: "#fff"
+    },
+    headerTintColor: "#fff",
+    headerLayoutPreset: "center",
+    headerTitleStyle: {
+      flex: 1,
+      color: "#fff",
+      fontWeight: "normal",
+      alignSelf: "center",
+      textAlign: "center"
+    }
+  };
+
   constructor(props) {
     super(props);
     this.state = {
@@ -36,29 +52,36 @@ class LoginScreen extends React.Component {
     });
     this.setState({ isReady: true });
   }
+
   signUpUser = () => {
-    firebase
-      .auth()
-      .createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .then(() => {
-        firebase.auth().onAuthStateChanged(user => {
-          firebase
-            .firestore()
-            .collection("Users")
-            .add({
-              email: user.email,
-              UUID: user.uid
-            })
-            .then(docID => {
-              this.props.navigation.navigate("Home", {
-                docID: docID
+    if (!this.state.email) {
+      alert("Email is Required!");
+    } else if (!this.state.password) {
+      alert("Please enter password!");
+    } else {
+      firebase
+        .auth()
+        .createUserWithEmailAndPassword(this.state.email, this.state.password)
+        .then(() => {
+          firebase.auth().onAuthStateChanged(user => {
+            firebase
+              .firestore()
+              .collection("Users")
+              .add({
+                email: user.email,
+                UUID: user.uid
+              })
+              .then(docID => {
+                this.props.navigation.navigate("Home", {
+                  docID: docID
+                });
               });
-            });
+          });
+        })
+        .catch(error => {
+          alert(error.message);
         });
-      })
-      .catch(error => {
-        console.log(error);
-      });
+    }
   };
 
   render() {
@@ -68,46 +91,59 @@ class LoginScreen extends React.Component {
     console.log(this.state);
     return (
       <Container>
-        <Header style={{ backgroundColor: "#3f51b5" }}>
-          <Body style={{ flex: 3, justifyContent: "center" }}>
-            <Title style={{ color: "#fff", alignSelf: "center" }}>
-              Transit Companion App
-            </Title>
-          </Body>
-        </Header>
         {/* Add the input here */}
 
-        <Container>
-          <Header />
-          <Content>
-            <Item>
-              <Icon active name="home" />
-              <Input
-                textContentType="emailAddress"
-                onChangeText={event => this.setState({ email: event })}
-                placeholder="Email"
-              />
-            </Item>
+        <Content padder>
+          <Card rounded>
+            <CardItem>
+              <Item>
+                <Icon active name="mail" />
+                <Input
+                  textContentType="emailAddress"
+                  onChangeText={event => this.setState({ email: event })}
+                  placeholder="Email"
+                />
+              </Item>
+            </CardItem>
+            <CardItem>
+              <Item>
+                <Icon active name="text" />
+                <Input
+                  secureTextEntry={true}
+                  textContentType="emailAddress"
+                  onChangeText={event => this.setState({ password: event })}
+                  placeholder="Password"
+                />
+              </Item>
+            </CardItem>
 
-            <Item>
-              <Input
-                textContentType="emailAddress"
-                onChangeText={event => this.setState({ password: event })}
-                placeholder="Password"
-              />
-              <Icon active name="swap" />
-            </Item>
-          </Content>
-        </Container>
-
-        {/* Ask the user for their name */}
-        {/* Ask the user for their prefered bus -> 12, 12A .. etc */}
-        <Button onPress={() => this.signUpUser()}>
-          <Text>Hello</Text>
-        </Button>
+            <CardItem>
+              {/* Ask the user for their name */}
+              {/* Ask the user for their prefered bus -> 12, 12A .. etc */}
+              <Button
+                bordered
+                dark
+                style={styles.loginBtn}
+                onPress={() => this.signUpUser()}
+              >
+                <Text style={styles.loginBtn}>Login</Text>
+              </Button>
+            </CardItem>
+          </Card>
+        </Content>
       </Container>
     );
   }
 }
+
+const styles = {
+  card: {
+    maxWidth: "90%"
+  },
+  loginBtn: {
+    flex: 1,
+    textAlign: "center"
+  }
+};
 
 export default LoginScreen;
