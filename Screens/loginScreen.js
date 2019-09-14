@@ -40,19 +40,21 @@ class LoginScreen extends React.Component {
     firebase
       .auth()
       .createUserWithEmailAndPassword(this.state.email, this.state.password)
-      .then(user => {
-        firebase
-          .firestore()
-          .collection("Users")
-          .add({
-            email: user.email,
-            UUID: user.uid
-          })
-          .then(docID => {
-            this.props.navigation.navigate("Home", {
-              docID: docID
+      .then(() => {
+        firebase.auth().onAuthStateChanged(user => {
+          firebase
+            .firestore()
+            .collection("Users")
+            .add({
+              email: user.email,
+              UUID: user.uid
+            })
+            .then(docID => {
+              this.props.navigation.navigate("Home", {
+                docID: docID
+              });
             });
-          });
+        });
       })
       .catch(error => {
         console.log(error);
