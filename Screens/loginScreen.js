@@ -1,5 +1,6 @@
-import React from "react";
-import { AppLoading } from "expo";
+import React from "react"; // react
+import { AppLoading } from "expo"; // expo
+import { View, KeyboardAvoidingView, Platform } from "react-native"
 import {
   Container,
   Button,
@@ -9,16 +10,18 @@ import {
   Input,
   Content,
   Item,
-  CardItem
-} from "native-base";
-import firebase from "../Components/firebase";
-import * as Font from "expo-font";
-import { Ionicons } from "@expo/vector-icons";
+  CardItem,
+  H1
+} from "native-base"; // native-base components
+import firebase from "../Components/firebase"; // firebase
+import * as Font from "expo-font"; // fonts
+import { Ionicons } from "@expo/vector-icons"; // icons
+import LottieView from "lottie-react-native"; // lottie
 import { createStackNavigator, createAppContainer } from "react-navigation"; // Version can be specified in package.json
 
 class LoginScreen extends React.Component {
   static navigationOptions = {
-    title: "Login"
+    header: null
   };
 
   constructor(props) {
@@ -29,14 +32,14 @@ class LoginScreen extends React.Component {
       password: null
     };
   }
-
+  
   async componentDidMount() {
     await Font.loadAsync({
       Roboto: require("../node_modules/native-base/Fonts/Roboto.ttf"),
       Roboto_medium: require("../node_modules/native-base/Fonts/Roboto_medium.ttf"),
       ...Ionicons.font
     });
-    this.setState({ isReady: true });
+	this.setState({ isReady: true });
   }
 
   signUpUser = () => {
@@ -70,53 +73,60 @@ class LoginScreen extends React.Component {
     }
   };
 
-  signInUser = () => {
-    firebase
-      .auth()
-      .signInWithEmailAndPassword(this.state.email, this.state.password)
-      .then(user => {
-        firebase.auth().onAuthStateChanged(user => {
-          this.props.navigation.navigate("Home", {
-            UUID: user.uid
-          });
-        });
-      });
-  };
-
   render() {
     if (!this.state.isReady) {
       return <AppLoading />;
     }
     console.log(this.state);
     return (
+		<KeyboardAvoidingView
+                behavior={"padding"}
+                style={{ flex: 1 }}
+            >
       <Container>
-        {/* Add the input here */}
-
-
-        <Content padder>
-          <Card rounded>
+        <Content
+          contentContainerStyle={{ justifyContent: "center", flex: 1 }}
+          padder
+          style={styles.verticalAlign}
+        >
+			
+          <View style={styles.animationContainer}>
+            <LottieView
+              ref={animation => {
+                this.animation = animation;
+			  }}
+              style={{
+                width: 150,
+                height: 150,
+                backgroundColor: "#fff"
+              }}
+			  source={require("../Animations/bus_animation")}
+			  autoPlay loop
+            />
+			<H1 style={styles.title}>Sign Up</H1>
+          </View>
+		  
+		  
+          {/* <Card rounded> */}
             <CardItem>
               <Item>
                 <Icon active name="mail" />
-
                 <Input
                   textContentType="emailAddress"
                   onChangeText={event => this.setState({ email: event })}
                   placeholder="Email"
                 />
-
               </Item>
             </CardItem>
             <CardItem>
               <Item>
-                <Icon active name="text" />
+                <Icon active name="lock" />
                 <Input
                   secureTextEntry={true}
                   textContentType="emailAddress"
                   onChangeText={event => this.setState({ password: event })}
                   placeholder="Password"
                 />
-
               </Item>
             </CardItem>
 
@@ -127,25 +137,47 @@ class LoginScreen extends React.Component {
                 bordered
                 dark
                 style={styles.loginBtn}
-                onPress={() => this.signUpUser()}
+				onPress={() => this.signUpUser()}
+				danger
               >
-                <Text style={styles.loginBtn}>Login</Text>
+                <Text style={styles.loginBtn}>Sign Up</Text>
               </Button>
             </CardItem>
-          </Card>
+          {/* </Card> */}
         </Content>
       </Container>
+	  </KeyboardAvoidingView>
     );
   }
 }
 
 const styles = {
   card: {
-    maxWidth: "90%"
+    maxWidth: "85%"
   },
   loginBtn: {
     flex: 1,
-    textAlign: "center"
+	textAlign: "center",
+	color: "rgb(206, 75,77)"
+  },
+  verticalAlign: {
+    flex: 1,
+    textAlignVertical: "center"
+  },
+  animationContainer: {
+    backgroundColor: "#fff",
+    alignItems: "center",
+    justifyContent: "center",
+	display: "flex"
+  },
+  buttonContainer: {
+    paddingTop: 20
+  },
+  title: {
+	  textAlign: "center",
+	  fontSize: 35,
+	  paddingTop: 30,
+	  
   }
 };
 
