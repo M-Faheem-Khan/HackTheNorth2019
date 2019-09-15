@@ -9,24 +9,46 @@ const axios = require("axios");
 // });
 
 exports.sendData = functions.https.onRequest((request, response) => {
+  console.log(request.query.name);
   const axios = require("axios");
   const appID = "ZZpqmecjRUHLWYsTp6hp";
   const appCode = "d6xX406tT_Ss4sf4PSV4Eg";
-  const lat = "43.4643";
-  const long = "80.5204";
+  const lat = "43.4702626";
+  const long = "-80.53592688";
   const meters = "1000";
 
+  //   here is the string that logic
+
+  //var urlDepartTimes = `https://transit.api.here.com/v3/board.json?lang=en&stnId=${stationID}&time=${new Date().toISOString()}%3A30%3A00&&app_id=${appID}&app_code=${appCode}`;
+
   var url = `https://transit.api.here.com/v3/stations/by_geocoord.json?center=${lat}%2C${long}&radius=${meters}&app_id=${appID}&app_code=${appCode}&max=3`;
-  axios
+
+  var goodArray = [];
+
+  return axios
     .get(url)
     .then(data => {
-      console.log(data);
-      console.log(data.data);
+      var dataToSend = data.data.Res.Stations.Stn;
+      dataToSend.forEach(dataSpecific => {
+        goodArray.push([
+          dataSpecific.distance,
+          dataSpecific.name,
+          dataSpecific.Transports,
+          dataSpecific.id
+        ]);
+      });
+      console.log(goodArray);
+      return response.send({
+        goodArray
+      });
     })
     .catch(error => {
       console.log(error);
-    })
-    .finally(data => {
-      console.log(data);
     });
+});
+
+exports.moo = functions.https.onRequest((request, response) => {
+  return response.json({
+    no: "No Bitch"
+  });
 });

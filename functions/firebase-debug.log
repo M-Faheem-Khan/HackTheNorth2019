@@ -1,285 +1,64 @@
-[debug] [2019-09-15T02:30:40.811Z] ----------------------------------------------------------------------
-[debug] [2019-09-15T02:30:40.826Z] Command:       /home/eric/.nvm/versions/node/v12.9.1/bin/node /usr/bin/firebase serve
-[debug] [2019-09-15T02:30:40.826Z] CLI Version:   7.3.0
-[debug] [2019-09-15T02:30:40.826Z] Platform:      linux
-[debug] [2019-09-15T02:30:40.826Z] Node Version:  v12.9.1
-[debug] [2019-09-15T02:30:40.827Z] Time:          Sat Sep 14 2019 22:30:40 GMT-0400 (Eastern Daylight Time)
-[debug] [2019-09-15T02:30:40.827Z] ----------------------------------------------------------------------
+[debug] [2019-09-15T03:56:10.976Z] ----------------------------------------------------------------------
+[debug] [2019-09-15T03:56:10.977Z] Command:       /home/eric/.nvm/versions/node/v12.9.1/bin/node /usr/bin/firebase serve
+[debug] [2019-09-15T03:56:10.977Z] CLI Version:   7.3.0
+[debug] [2019-09-15T03:56:10.977Z] Platform:      linux
+[debug] [2019-09-15T03:56:10.977Z] Node Version:  v12.9.1
+[debug] [2019-09-15T03:56:10.977Z] Time:          Sat Sep 14 2019 23:56:10 GMT-0400 (Eastern Daylight Time)
+[debug] [2019-09-15T03:56:10.977Z] ----------------------------------------------------------------------
 [debug] 
-[debug] [2019-09-15T02:30:40.832Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
-[debug] [2019-09-15T02:30:40.832Z] > authorizing via signed-in user
-[debug] [2019-09-15T02:30:40.832Z] [iam] checking project transit-companion-app for permissions ["firebase.projects.get"]
-[debug] [2019-09-15T02:30:40.833Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/transit-companion-app:testIamPermissions  
+[debug] [2019-09-15T03:56:10.981Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2019-09-15T03:56:10.981Z] > authorizing via signed-in user
+[debug] [2019-09-15T03:56:10.981Z] [iam] checking project transit-companion-app for permissions ["firebase.projects.get"]
+[debug] [2019-09-15T03:56:10.982Z] >>> HTTP REQUEST POST https://cloudresourcemanager.googleapis.com/v1/projects/transit-companion-app:testIamPermissions  
 
-[debug] [2019-09-15T02:30:41.144Z] <<< HTTP RESPONSE 200
-[debug] [2019-09-15T02:30:41.149Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/transit-companion-app  
+[debug] [2019-09-15T03:56:11.425Z] <<< HTTP RESPONSE 200
+[debug] [2019-09-15T03:56:11.431Z] >>> HTTP REQUEST GET https://firebase.googleapis.com/v1beta1/projects/transit-companion-app  
  
-[debug] [2019-09-15T02:30:41.403Z] <<< HTTP RESPONSE 200
+[debug] [2019-09-15T03:56:11.732Z] <<< HTTP RESPONSE 200
 [info] 
 [info] === Serving from '/home/eric/HTN/HackTheNorth2019'...
 [info] 
 [warn] ⚠  Your requested "node" version "8" doesn't match your global version "12"
 [info] ✔  functions: Emulator started at http://localhost:5000
 [info] i  functions: Watching "/home/eric/HTN/HackTheNorth2019/functions" for Cloud Functions...
-[debug] [2019-09-15T02:30:41.867Z] [runtime-status] Functions runtime initialized. {"cwd":"/home/eric/HTN/HackTheNorth2019/functions","node_version":"12.9.1"}
-[debug] [2019-09-15T02:30:41.868Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
-[debug] [2019-09-15T02:30:41.869Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.5.0","resolution":"/home/eric/HTN/HackTheNorth2019/functions/node_modules/firebase-admin/lib/index.js"}
-[debug] [2019-09-15T02:30:41.870Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/home/eric/HTN/HackTheNorth2019/functions/node_modules/firebase-functions/lib/index.js"}
-[debug] [2019-09-15T02:30:41.870Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/home/eric/HTN/HackTheNorth2019/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-09-15T03:56:12.196Z] [runtime-status] Functions runtime initialized. {"cwd":"/home/eric/HTN/HackTheNorth2019/functions","node_version":"12.9.1"}
+[debug] [2019-09-15T03:56:12.196Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-15T03:56:12.198Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.5.0","resolution":"/home/eric/HTN/HackTheNorth2019/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-09-15T03:56:12.199Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/home/eric/HTN/HackTheNorth2019/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-09-15T03:56:12.199Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/home/eric/HTN/HackTheNorth2019/functions/node_modules/firebase-functions/lib/index.js"}
 [info] ✔  functions[sendData]: http function initialized (http://localhost:5000/transit-companion-app/us-central1/sendData).
-[debug] [2019-09-15T02:30:47.298Z] Accepted request GET /transit-companion-app/us-central1/sendData --> sendData
-[debug] [2019-09-15T02:30:47.860Z] [runtime-status] Functions runtime initialized. {"cwd":"/home/eric/HTN/HackTheNorth2019/functions","node_version":"12.9.1"}
+[info] ✔  functions[moo]: http function initialized (http://localhost:5000/transit-companion-app/us-central1/moo).
+[debug] [2019-09-15T03:56:18.598Z] Accepted request GET /transit-companion-app/us-central1/sendData --> sendData
+[debug] [2019-09-15T03:56:18.736Z] [runtime-status] Functions runtime initialized. {"cwd":"/home/eric/HTN/HackTheNorth2019/functions","node_version":"12.9.1"}
 [info] i  functions: Beginning execution of "sendData"
-[debug] [2019-09-15T02:30:47.863Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
-[debug] [2019-09-15T02:30:47.875Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.5.0","resolution":"/home/eric/HTN/HackTheNorth2019/functions/node_modules/firebase-admin/lib/index.js"}
-[debug] [2019-09-15T02:30:47.879Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/home/eric/HTN/HackTheNorth2019/functions/node_modules/firebase-functions/lib/index.js"}
-[debug] [2019-09-15T02:30:47.880Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/home/eric/HTN/HackTheNorth2019/functions/node_modules/firebase-functions/lib/index.js"}
-[debug] [2019-09-15T02:30:48.056Z] [runtime-status] Trigger "sendData" has been found, beginning invocation! {}
-[debug] [2019-09-15T02:30:48.056Z] [runtime-status]  {"httpsTrigger":{},"name":"sendData","entryPoint":"sendData"}
-[debug] [2019-09-15T02:30:48.056Z] [runtime-status] Running sendData in mode HTTPS {}
-[debug] [2019-09-15T02:30:48.089Z] {"socketPath":"/tmp/firebase_emulator_invocation_11810.sock"}
-[debug] [2019-09-15T02:30:48.098Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_11810.sock"}
-[debug] [2019-09-15T02:30:48.126Z] [runtime-status] Ephemeral server used! {}
-[debug] [2019-09-15T02:30:48.217Z] [runtime-status] Ephemeral server survived. {}
-[info] >  {
-[info] >    status: 200,
-[info] >    statusText: 'OK',
-[info] >    headers: {
-[info] >      date: 'Sun, 15 Sep 2019 02:30:48 GMT',
-[info] >      'content-type': 'application/json',
-[info] >      'content-length': '157',
-[info] >      connection: 'close',
-[info] >      server: 'nginx-clojure',
-[info] >      'access-control-allow-origin': '*',
-[info] >      'access-control-allow-credentials': 'true',
-[info] >      'x-served-by': 'i-0d05cd38340223b21.us-east-1a'
-[info] >    },
-[info] >    config: {
-[info] >      url: 'https://transit.api.here.com/v3/stations/by_geocoord.json?center=43.4643%2C80.5204&radius=1000&app_id=ZZpqmecjRUHLWYsTp6hp&app_code=d6xX406tT_Ss4sf4PSV4Eg&max=3',
-[info] >      method: 'get',
-[info] >      headers: {
-[info] >        Accept: 'application/json, text/plain, */*',
-[info] >        'User-Agent': 'axios/0.19.0'
-[info] >      },
-[info] >      transformRequest: [ [Function: transformRequest] ],
-[info] >      transformResponse: [ [Function: transformResponse] ],
-[info] >      timeout: 0,
-[info] >      adapter: [Function: httpAdapter],
-[info] >      xsrfCookieName: 'XSRF-TOKEN',
-[info] >      xsrfHeaderName: 'X-XSRF-TOKEN',
-[info] >      maxContentLength: -1,
-[info] >      validateStatus: [Function: validateStatus],
-[info] >      data: undefined
-[info] >    },
-[info] >    request: ClientRequest {
-[info] >      _events: [Object: null prototype] {
-[info] >        socket: [Function],
-[info] >        abort: [Function],
-[info] >        aborted: [Function],
-[info] >        error: [Function],
-[info] >        timeout: [Function],
-[info] >        prefinish: [Function: requestOnPrefinish]
-[info] >      },
-[info] >      _eventsCount: 6,
-[info] >      _maxListeners: undefined,
-[info] >      outputData: [],
-[info] >      outputSize: 0,
-[info] >      writable: true,
-[info] >      _last: true,
-[info] >      chunkedEncoding: false,
-[info] >      shouldKeepAlive: false,
-[info] >      useChunkedEncodingByDefault: false,
-[info] >      sendDate: false,
-[info] >      _removedConnection: false,
-[info] >      _removedContLen: false,
-[info] >      _removedTE: false,
-[info] >      _contentLength: 0,
-[info] >      _hasBody: true,
-[info] >      _trailer: '',
-[info] >      finished: true,
-[info] >      _headerSent: true,
-[info] >      socket: TLSSocket {
-[info] >        _tlsOptions: [Object],
-[info] >        _secureEstablished: true,
-[info] >        _securePending: false,
-[info] >        _newSessionPending: false,
-[info] >        _controlReleased: true,
-[info] >        _SNICallback: null,
-[info] >        servername: 'transit.api.here.com',
-[info] >        alpnProtocol: false,
-[info] >        authorized: true,
-[info] >        authorizationError: null,
-[info] >        encrypted: true,
-[info] >        _events: [Object: null prototype],
-[info] >        _eventsCount: 9,
-[info] >        connecting: false,
-[info] >        _hadError: false,
-[info] >        _parent: null,
-[info] >        _host: 'transit.api.here.com',
-[info] >        _readableState: [ReadableState],
-[info] >        readable: true,
-[info] >        _maxListeners: undefined,
-[info] >        _writableState: [WritableState],
-[info] >        writable: false,
-[info] >        allowHalfOpen: false,
-[info] >        _sockname: null,
-[info] >        _pendingData: null,
-[info] >        _pendingEncoding: '',
-[info] >        server: undefined,
-[info] >        _server: null,
-[info] >        ssl: [TLSWrap],
-[info] >        _requestCert: true,
-[info] >        _rejectUnauthorized: true,
-[info] >        parser: null,
-[info] >        _httpMessage: [Circular],
-[info] >        [Symbol(res)]: [TLSWrap],
-[info] >        [Symbol(asyncId)]: 27,
-[info] >        [Symbol(kHandle)]: [TLSWrap],
-[info] >        [Symbol(lastWriteQueueSize)]: 0,
-[info] >        [Symbol(timeout)]: null,
-[info] >        [Symbol(kBytesRead)]: 0,
-[info] >        [Symbol(kBytesWritten)]: 0,
-[info] >        [Symbol(connect-options)]: [Object]
-[info] >      },
-[info] >      connection: TLSSocket {
-[info] >        _tlsOptions: [Object],
-[info] >        _secureEstablished: true,
-[info] >        _securePending: false,
-[info] >        _newSessionPending: false,
-[info] >        _controlReleased: true,
-[info] >        _SNICallback: null,
-[info] >        servername: 'transit.api.here.com',
-[info] >        alpnProtocol: false,
-[info] >        authorized: true,
-[info] >        authorizationError: null,
-[info] >        encrypted: true,
-[info] >        _events: [Object: null prototype],
-[info] >        _eventsCount: 9,
-[info] >        connecting: false,
-[info] >        _hadError: false,
-[info] >        _parent: null,
-[info] >        _host: 'transit.api.here.com',
-[info] >        _readableState: [ReadableState],
-[info] >        readable: true,
-[info] >        _maxListeners: undefined,
-[info] >        _writableState: [WritableState],
-[info] >        writable: false,
-[info] >        allowHalfOpen: false,
-[info] >        _sockname: null,
-[info] >        _pendingData: null,
-[info] >        _pendingEncoding: '',
-[info] >        server: undefined,
-[info] >        _server: null,
-[info] >        ssl: [TLSWrap],
-[info] >        _requestCert: true,
-[info] >        _rejectUnauthorized: true,
-[info] >        parser: null,
-[info] >        _httpMessage: [Circular],
-[info] >        [Symbol(res)]: [TLSWrap],
-[info] >        [Symbol(asyncId)]: 27,
-[info] >        [Symbol(kHandle)]: [TLSWrap],
-[info] >        [Symbol(lastWriteQueueSize)]: 0,
-[info] >        [Symbol(timeout)]: null,
-[info] >        [Symbol(kBytesRead)]: 0,
-[info] >        [Symbol(kBytesWritten)]: 0,
-[info] >        [Symbol(connect-options)]: [Object]
-[info] >      },
-[info] >      _header: 'GET /v3/stations/by_geocoord.json?center=43.4643%2C80.5204&radius=1000&app_id=ZZpqmecjRUHLWYsTp6hp&app_code=d6xX406tT_Ss4sf4PSV4Eg&max=3 HTTP/1.1\r\n' +
-[info] >        'Accept: application/json, text/plain, */*\r\n' +
-[info] >        'User-Agent: axios/0.19.0\r\n' +
-[info] >        'Host: transit.api.here.com\r\n' +
-[info] >        'Connection: close\r\n' +
-[info] >        '\r\n',
-[info] >      _onPendingData: [Function: noopPendingOutput],
-[info] >      agent: Agent {
-[info] >        _events: [Object: null prototype],
-[info] >        _eventsCount: 1,
-[info] >        _maxListeners: undefined,
-[info] >        defaultPort: 443,
-[info] >        protocol: 'https:',
-[info] >        options: [Object],
-[info] >        requests: {},
-[info] >        sockets: [Object],
-[info] >        freeSockets: {},
-[info] >        keepAliveMsecs: 1000,
-[info] >        keepAlive: false,
-[info] >        maxSockets: Infinity,
-[info] >        maxFreeSockets: 256,
-[info] >        maxCachedSessions: 100,
-[info] >        _sessionCache: [Object]
-[info] >      },
-[info] >      socketPath: undefined,
-[info] >      method: 'GET',
-[info] >      path: '/v3/stations/by_geocoord.json?center=43.4643%2C80.5204&radius=1000&app_id=ZZpqmecjRUHLWYsTp6hp&app_code=d6xX406tT_Ss4sf4PSV4Eg&max=3',
-[info] >      _ended: true,
-[info] >      res: IncomingMessage {
-[info] >        _readableState: [ReadableState],
-[info] >        readable: false,
-[info] >        _events: [Object: null prototype],
-[info] >        _eventsCount: 3,
-[info] >        _maxListeners: undefined,
-[info] >        socket: [TLSSocket],
-[info] >        connection: [TLSSocket],
-[info] >        httpVersionMajor: 1,
-[info] >        httpVersionMinor: 1,
-[info] >        httpVersion: '1.1',
-[info] >        complete: true,
-[info] >        headers: [Object],
-[info] >        rawHeaders: [Array],
-[info] >        trailers: {},
-[info] >        rawTrailers: [],
-[info] >        aborted: false,
-[info] >        upgrade: false,
-[info] >        url: '',
-[info] >        method: null,
-[info] >        statusCode: 200,
-[info] >        statusMessage: 'OK',
-[info] >        client: [TLSSocket],
-[info] >        _consuming: false,
-[info] >        _dumped: false,
-[info] >        req: [Circular],
-[info] >        responseUrl: 'https://transit.api.here.com/v3/stations/by_geocoord.json?center=43.4643%2C80.5204&radius=1000&app_id=ZZpqmecjRUHLWYsTp6hp&app_code=d6xX406tT_Ss4sf4PSV4Eg&max=3',
-[info] >        redirects: []
-[info] >      },
-[info] >      aborted: false,
-[info] >      timeoutCb: null,
-[info] >      upgradeOrConnect: false,
-[info] >      parser: null,
-[info] >      maxHeadersCount: null,
-[info] >      _redirectable: Writable {
-[info] >        _writableState: [WritableState],
-[info] >        writable: true,
-[info] >        _events: [Object: null prototype],
-[info] >        _eventsCount: 2,
-[info] >        _maxListeners: undefined,
-[info] >        _options: [Object],
-[info] >        _redirectCount: 0,
-[info] >        _redirects: [],
-[info] >        _requestBodyLength: 0,
-[info] >        _requestBodyBuffers: [],
-[info] >        _onNativeResponse: [Function],
-[info] >        _currentRequest: [Circular],
-[info] >        _currentUrl: 'https://transit.api.here.com/v3/stations/by_geocoord.json?center=43.4643%2C80.5204&radius=1000&app_id=ZZpqmecjRUHLWYsTp6hp&app_code=d6xX406tT_Ss4sf4PSV4Eg&max=3'
-[info] >      },
-[info] >      [Symbol(kNeedDrain)]: false,
-[info] >      [Symbol(isCorked)]: false,
-[info] >      [Symbol(kOutHeaders)]: [Object: null prototype] {
-[info] >        accept: [Array],
-[info] >        'user-agent': [Array],
-[info] >        host: [Array]
-[info] >      }
-[info] >    },
-[info] >    data: {
-[info] >      Res: {
-[info] >        serviceUrl: 'https://transit.api.here.com/transit/v3/stations/by_geocoord.json',
-[info] >        Message: [Object]
-[info] >      }
-[info] >    }
-[info] >  }
-[info] >  {
-[info] >    Res: {
-[info] >      serviceUrl: 'https://transit.api.here.com/transit/v3/stations/by_geocoord.json',
-[info] >      Message: { code: 'SS0007', level: 'E', text: 'No stations found' }
-[info] >    }
-[info] >  }
-[info] >  undefined
+[debug] [2019-09-15T03:56:18.736Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-15T03:56:18.738Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.5.0","resolution":"/home/eric/HTN/HackTheNorth2019/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-09-15T03:56:18.739Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/home/eric/HTN/HackTheNorth2019/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-09-15T03:56:18.740Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/home/eric/HTN/HackTheNorth2019/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-09-15T03:56:18.777Z] [runtime-status] Trigger "sendData" has been found, beginning invocation! {}
+[debug] [2019-09-15T03:56:18.777Z] [runtime-status]  {"httpsTrigger":{},"name":"sendData","entryPoint":"sendData"}
+[debug] [2019-09-15T03:56:18.777Z] [runtime-status] Running sendData in mode HTTPS {}
+[debug] [2019-09-15T03:56:18.783Z] {"socketPath":"/tmp/firebase_emulator_invocation_22359.sock"}
+[debug] [2019-09-15T03:56:18.785Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_22359.sock"}
+[debug] [2019-09-15T03:56:18.791Z] [runtime-status] Ephemeral server used! {}
+[info] >  
+[info] >  197,Laurier-Waterloo Park Station,[object Object],703440972,210,University Ave. / Phillip,[object Object],703442482,221,University Ave. / Phillip,[object Object],703441518
+[debug] [2019-09-15T03:56:18.984Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "sendData" in ~1s
+[debug] [2019-09-15T03:57:01.983Z] Accepted request GET /transit-companion-app/us-central1/sendData --> sendData
+[debug] [2019-09-15T03:57:02.114Z] [runtime-status] Functions runtime initialized. {"cwd":"/home/eric/HTN/HackTheNorth2019/functions","node_version":"12.9.1"}
+[info] i  functions: Beginning execution of "sendData"
+[debug] [2019-09-15T03:57:02.115Z] [runtime-status] Disabled runtime features: {"functions_config_helper":true,"network_filtering":true,"timeout":true,"memory_limiting":true,"admin_stubs":true} {}
+[debug] [2019-09-15T03:57:02.116Z] [runtime-status] Resolved module firebase-admin {"declared":true,"installed":true,"version":"8.5.0","resolution":"/home/eric/HTN/HackTheNorth2019/functions/node_modules/firebase-admin/lib/index.js"}
+[debug] [2019-09-15T03:57:02.117Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/home/eric/HTN/HackTheNorth2019/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-09-15T03:57:02.117Z] [runtime-status] Resolved module firebase-functions {"declared":true,"installed":true,"version":"3.2.0","resolution":"/home/eric/HTN/HackTheNorth2019/functions/node_modules/firebase-functions/lib/index.js"}
+[debug] [2019-09-15T03:57:02.157Z] [runtime-status] Trigger "sendData" has been found, beginning invocation! {}
+[debug] [2019-09-15T03:57:02.158Z] [runtime-status]  {"httpsTrigger":{},"name":"sendData","entryPoint":"sendData"}
+[debug] [2019-09-15T03:57:02.158Z] [runtime-status] Running sendData in mode HTTPS {}
+[debug] [2019-09-15T03:57:02.166Z] {"socketPath":"/tmp/firebase_emulator_invocation_22809.sock"}
+[debug] [2019-09-15T03:57:02.167Z] [functions] Runtime ready! Sending request! {"socketPath":"/tmp/firebase_emulator_invocation_22809.sock"}
+[debug] [2019-09-15T03:57:02.178Z] [runtime-status] Ephemeral server used! {}
+[info] >  
+[info] >  197,Laurier-Waterloo Park Station,[object Object],703440972,210,University Ave. / Phillip,[object Object],703442482,221,University Ave. / Phillip,[object Object],703441518
+[debug] [2019-09-15T03:57:02.334Z] [runtime-status] Ephemeral server survived. {}
+[info] i  functions: Finished "sendData" in ~1s
