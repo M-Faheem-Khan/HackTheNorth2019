@@ -62,7 +62,7 @@ class LoginScreen extends React.Component {
               })
               .then(docID => {
                 this.props.navigation.navigate("Home", {
-                  docID: docID
+                  docID: docID.id
                 });
               });
           });
@@ -77,11 +77,12 @@ class LoginScreen extends React.Component {
     if (!this.state.isReady) {
       return <AppLoading />;
     }
-    console.log(this.state);
+    
     return (
 		<KeyboardAvoidingView
                 behavior={"padding"}
                 style={{ flex: 1 }}
+                keyboardVerticalOffset={1}
             >
       <Container>
         <Content

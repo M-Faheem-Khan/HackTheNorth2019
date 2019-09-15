@@ -1,15 +1,17 @@
 import LoginScreen from "./Screens/loginScreen";
 import HomeScreen from "./Screens/HomeScreen";
-import FirstOpen from "./Screens/FirstOpen";
+import DashboardScreen from './Screens/selectFavoriteRoute'
 
 import { createAppContainer } from "react-navigation";
 import { createStackNavigator } from "react-navigation-stack";
 
 const AppNavigator = createStackNavigator(
   {
-    //FirstOpen: FirstOpen,
+      
     Login: LoginScreen,
     Home: HomeScreen,
+    Dashboard: DashboardScreen
+    
   },
   {
     defaultNavigationOptions: {
