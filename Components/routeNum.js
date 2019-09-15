@@ -25,7 +25,10 @@ export default class routeNum extends React.Component {
   render() {
     return (
       <View>
-        {this.props.RouteList.map(route => this.populateRoutesList(route))}
+        <Text>Hello World</Text>
+        {/* {
+          this.props.RouteList.forEach(route => this.populateRoutesList(route))
+        } */}
       </View>
     );
   }

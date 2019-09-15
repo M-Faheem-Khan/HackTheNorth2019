@@ -13,14 +13,26 @@ import { KeyboardAvoidingView } from "react-native";
 import { FontAwesome as Icon } from "@expo/vector-icons"
 import firebase from "../Components/firebase";
 import LottieView from "lottie-react-native";
+import {AppLoading} from 'expo'
+import * as Font from "expo-font"; // fonts
+import { Ionicons } from "@expo/vector-icons"; // icons
 
 class HomeScreen extends Component {
   static navigationOptions = {
     header: null
   };
 
-  state = { name: null, DOB: null, university: null, redirecting: false, docID: null };
+  state = { name: null, DOB: null, university: null, redirecting: false, docID: null, isReady: false };
   
+  async componentDidMount() {
+    await Font.loadAsync({
+      Roboto: require("../node_modules/native-base/Fonts/Roboto.ttf"),
+      Roboto_medium: require("../node_modules/native-base/Fonts/Roboto_medium.ttf"),
+      ...Ionicons.font
+    });
+  this.setState({ isReady: true });
+  console.log("It Ran")
+  }
 
   updateProfile = () => {
     if (!this.state.name) {
@@ -50,6 +62,10 @@ class HomeScreen extends Component {
   };
 
   render() {
+    if (!this.state.isReady) {
+      return <AppLoading />;
+    }
+  
     return (
       <KeyboardAvoidingView behavior={"padding"} style={{ flex: 1 }} keyboardVerticalOffset={1}>
         <Container style={styles.container}>

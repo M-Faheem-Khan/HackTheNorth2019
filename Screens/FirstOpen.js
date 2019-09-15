@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import { View } from "native-base";
 
 import LottieView from "lottie-react-native";
+import {AppLoading} from 'expo'
+import * as Font from "expo-font"; // fonts
+import { Ionicons } from "@expo/vector-icons"; // icons
 
 export default class FirstOpen extends Component {
   async componentDidMount() {
