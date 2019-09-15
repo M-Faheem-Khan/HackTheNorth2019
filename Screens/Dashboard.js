@@ -4,16 +4,16 @@ import {
   Container,
   Card,
   CardItem,
-  Header,
-  Body,
-  Title,
   Content,
+  View,
   Form,
-  Picker,
+  H1,
+  Picker
 } from "native-base";
 import firebase from "../Components/firebase";
 import { AppLoading } from "expo";
 import * as Font from "expo-font"; // fonts
+import LottieView from "lottie-react-native";
 import { Ionicons } from "@expo/vector-icons"; // icons
 
 class Dashboard extends React.Component {
@@ -30,7 +30,7 @@ class Dashboard extends React.Component {
     isModalVisible: false,
     selected: null
   };
- 
+
   toggleModal = () => {
     this.setState({ isModalVisible: !this.state.isModalVisible });
   };
@@ -68,10 +68,14 @@ class Dashboard extends React.Component {
       selected: value
     });
 
-    firebase.firestore().collection("Users").doc(this.props.navigation.getParam("docID")).update({
-      route: value,
-      DateModified: new Date().toISOString()
-    })
+    firebase
+      .firestore()
+      .collection("Users")
+      .doc(this.props.navigation.getParam("docID"))
+      .update({
+        route: value,
+        DateModified: new Date().toISOString()
+      });
   }
 
   render() {
@@ -81,11 +85,24 @@ class Dashboard extends React.Component {
     console.log(this.state);
     return (
       <Container padder>
-        <Header>
-          <Body style={styles.header}>
-            <Title>Hello, {this.state.name}</Title>
-          </Body>
-        </Header>
+        <View style={styles.view}>
+          <View style={styles.viewChild} >
+            <LottieView style={styles.animation}
+              ref={animation => {
+                this.animation = animation;
+              }}
+              style={{
+                width: 170,
+                height: 170,
+                backgroundColor: "#fff"
+              }}
+              source={require("../Animations/stopwatch.json")}
+              autoPlay
+              loop={false}
+            />
+            <H1 style={styles.title}>Hi, {this.state.name}</H1>
+          </View>
+        </View>
         <Content padder>
           <Card transparent>
             <CardItem>
@@ -93,7 +110,7 @@ class Dashboard extends React.Component {
             </CardItem>
             <CardItem>
               <Text>
-                Your fitbit companion number is{" "}
+                Your fitbit companion number is
                 <Text style={styles.companionNumber}>{this.state.number}</Text>
               </Text>
             </CardItem>
@@ -103,23 +120,29 @@ class Dashboard extends React.Component {
               </Button> */}
               <Form>
                 <Text>Please Select a prefered route:</Text>
-                <Picker note mode="dropdown" label="Prefered Route" style={{width: 120}} selectedValue={this.state.selected} onValueChange={this.onValueChange.bind(this)}>
-                  <Picker.Item label="5" value={5}/>
-                  <Picker.Item label="7" value={7}/>
-                  <Picker.Item label="9" value={9}/>
-                  <Picker.Item label="12" value={12}/>
-                  <Picker.Item label="13" value={13}/>
-                  <Picker.Item label="19" value={19}/>
-                  <Picker.Item label="29" value={29}/>
-                  <Picker.Item label="31" value={31}/>
-                  <Picker.Item label="201" value={201}/>
-                  <Picker.Item label="202" value={202}/>
+                <Picker
+                  note
+                  mode="dropdown"
+                  label="Prefered Route"
+                  style={{ width: 120 }}
+                  selectedValue={this.state.selected}
+                  onValueChange={this.onValueChange.bind(this)}
+                >
+                  <Picker.Item label="5" value={5} />
+                  <Picker.Item label="7" value={7} />
+                  <Picker.Item label="9" value={9} />
+                  <Picker.Item label="12" value={12} />
+                  <Picker.Item label="13" value={13} />
+                  <Picker.Item label="19" value={19} />
+                  <Picker.Item label="29" value={29} />
+                  <Picker.Item label="31" value={31} />
+                  <Picker.Item label="201" value={201} />
+                  <Picker.Item label="202" value={202} />
                 </Picker>
               </Form>
             </CardItem>
           </Card>
         </Content>
-
       </Container>
     );
   }
@@ -140,14 +163,17 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
     display: "flex",
-    paddingTop: 7
+    paddingTop: 100
+  },
+  animation: {
+    paddingTop: 100
   },
   Lottie: {
     width: 150,
     height: 150,
     backgroundColor: "#fff"
   },
-  title: { textAlign: "center", fontSize: 32, paddingTop: 70 },
+  title: { textAlign: "center", fontSize: 32, paddingTop: 10},
   container: {
     textAlign: "center",
     fontSize: 32,
