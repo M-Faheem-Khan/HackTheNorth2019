@@ -32,7 +32,7 @@ Publishing to the App Store, and the Google Play Store. The goal is to get InTim
 Built With React + React-Native, Firebase, HereMap, Cloud-Functions, Figma, Fitbit
 
 ## Authors:
-https://github.com/evanmkim
-https://github.com/timothy-e
-https://github.com/M-Faheem-Khan
-https://github.com/EricMarcantonio
+https://github.com/evanmkim  
+https://github.com/timothy-e  
+https://github.com/M-Faheem-Khan  
+https://github.com/EricMarcantonio  
