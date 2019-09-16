@@ -1,0 +1,93 @@
+<svg>
+  <!-- Define a reusable tile to display information-->
+  <symbol id="tile-bus" focusable="false" pointer-events="visible"
+  system-events="all">
+    
+    <svg id = "color">
+      <!-- Hacky round rect --> 
+      <rect class="coloredShapes" x='2%' y='10%' width='34%' height='50%' />
+
+      <!-- Top Left -->
+      <rect x='2%' y='10%' width='14' height='14' fill='black' />
+       <circle class = "coloredShapes" r='14' cx='2%+14' cy='10%+14' />
+
+      <!-- Top Right -->
+      <rect x='35%-8' y='10%' width='14' height='14' fill='black' />
+      <circle class = "coloredShapes" r='14' cx='35%-11' cy='10%+14'/>
+
+      <!-- Bottom Left -->
+      <rect x='2%' y='60%-14' width='14' height='14' fill='black' />
+      <circle class = "coloredShapes" r='14' cx='2%+14' cy='60%-14' />
+
+      <!-- Bottom Right -->
+      <rect x='35%-8' y='60%-14' width='14' height='14' fill='black' />
+      <circle class = "coloredShapes" r='14' cx='35%-11' cy='60%-14' />
+    </svg> 
+    
+    <section x="50%-158" y="50%-27" width="100" height="28">
+      <text id="route" font-size="40" text-anchor = "middle" class="boldLabel" x="50%" y="30" >ROUTE</text>
+    </section>
+    
+    <text id="intersection"  x="12" y="70" font-size="18" fill="white">Intersection</text>
+    <text id="arrow"  x="210" y="72" font-size="20" fill="white">-></text>
+    <text id="destination"  x="248" y="70" font-size="18" fill="white">Destination</text>
+    <text id="distance" text-anchor = "end" x ="200" y="38" font-size="20" fill = "white" class= "thinText">0</text>
+    <text id="" x ="210" y="38" font-size="20" fill = "white" class= "thinText">m</text>
+    <text id="eta" x ="250" y="42" font-size="40" fill = "white">ETA</text>
+    <text id="minutes" x ="295" y="42" font-size="20" fill = "white" class= "thinText">mins</text>
+    <rect id="tile-divider-bottom" height="2" />
+    
+  </symbol>
+  
+  <svg id = 'arrivalPage'>
+    <rect x='0' y='0' width='100%' height='100%' fill='black' />
+    <text x ="75" y="100" font-size="20" fill = "white" class= "thinText">Did You</text>
+    <text x ="35" y="140" font-size="20" fill = "white" class= "thinText">Make It InTime?</text>
+    <use id="up" href="#static-image" x="225" y="5" height="110"
+    width="98">
+      <set href="image" attributeName="href" to="up.png"/>
+    </use>
+    <use id="down" href="#static-image" x="225" y="130" height="110"
+    width="98">
+      <set href="image" attributeName="href" to="down.png"/>
+    </use>
+  </svg>
+  
+  <svg id = 'closingPage'>
+    <rect x='0' y='0' width='100%' height='100%' fill='black' />
+    <text x ="110" y="125" font-size="20" fill = "white" class= "thinText">Enjoy Your Ride</text>
+  </svg>
+  
+  <textarea id="status" class="status">Status Message to be Displayed
+  Here</textarea>
+
+  <use id="busList" href="#tile-list" height="90%" width="100%">
+    <var id="reorder-enabled" value="0"/>
+    <var id="separator-height-bottom" value="2"/>
+
+    <use id="bus-0" href="#tile-list-item" class="item">
+      <use href="#tile-bus" />
+    </use>
+    <use id="bus-1" href="#tile-list-item" class="item">
+      <use href="#tile-bus" />
+    </use>
+    <use id="bus-2" href="#tile-list-item" class="item">
+      <use href="#tile-bus" />
+    </use>
+    <use id="bus-3" href="#tile-list-item" class="item">
+      <use href="#tile-bus" />
+    </use>
+    <use id="bus-4" href="#tile-list-item" class="item">
+      <use href="#tile-bus" />
+    </use>
+    <use id="bus-5" href="#tile-list-item" class="item">
+      <use href="#tile-bus" />
+    </use>
+  </use>
+  <rect id='bus-background' x="0" y="230" width = "100%" height = "100%" opacity = "1" fill='black'/>
+  <text id="refresh rate" font-size="13" x ="170" y="245" fill = "white" class= "refreshText">Last Updated 3 Minutes Ago</text>
+</svg>
+
+
+
+

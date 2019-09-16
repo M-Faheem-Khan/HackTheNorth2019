@@ -1,0 +1,28 @@
+{
+  "fitbit": {
+    "appUUID": "4a956d17-20f5-4705-899d-efe8e19b8049",
+    "appType": "app",
+    "appDisplayName": "In Time",
+    "iconFile": "resources/icon.png",
+    "wipeColor": "#607d8b",
+    "requestedPermissions": [
+      "access_internet",
+      "access_location",
+      "run_background"
+    ],
+    "buildTargets": [
+      "higgs",
+      "meson",
+      "gemini"
+    ],
+    "i18n": {
+      "en": {
+        "name": "In Time"
+      }
+    },
+    "defaultLanguage": "en-US"
+  },
+  "devDependencies": {
+    "@fitbit/sdk": "~3.1.0"
+  }
+}
